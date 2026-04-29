@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
+import java.util.Scanner;
 
 
 //THIS IS A COMMAND LINE APP NOT A WEB APP
@@ -31,18 +32,35 @@ public class Application {
 		//createStudent(studentDAO);
 		//ReadStudent(studentDAO);
 		//ListALl(studentDAO);
-		UpdateStudent(studentDAO);
+		//UpdateStudent(studentDAO);
+		DeleteStudent(studentDAO);
 		};
 
 	}
 
+	private void DeleteStudent(StudentDAO studentDAO) {
+		out.println("Enter the Id to Delete: ");
+		Scanner scan=new Scanner(System.in);
+		int id=scan.nextInt();
+
+		out.println("Working on deleting student with Id: "+id);
+		studentDAO.delete(id);
+
+		out.println("As you can see, has been removed:");
+		out.println(studentDAO.findAll());
+	}
+
 	private void UpdateStudent(StudentDAO studentDAO) {
+		out.println("Enter the new name to update: ");
 		int studentId=1;
+		Scanner scan=new Scanner(System.in);
+		String update=scan.next();
+
 		out.println("Getting student with id: "+studentId);
 		Student student=studentDAO.findById(studentId);
 
 		out.println("Updating student...");
-		student.setFirstname("safaa");
+		student.setFirstname(update);
 		studentDAO.updateStudent(student);
 
 		out.println("Display updated student: "+student);
