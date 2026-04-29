@@ -21,7 +21,7 @@ public class StudentDaoImp implements StudentDAO{
     }
 
     @Override
-    @Transactional//it's a safety way when update or modification with database
+    @Transactional//it's a safety way when update or modification with database, without it will give error
     public void save(Student student) {
     entityManager.persist(student); // to save in DB
     }
@@ -34,7 +34,14 @@ public class StudentDaoImp implements StudentDAO{
     @Override
     public List<Student> findAll() {
         //FROM Student, here Student is the name of entity(class name) not name of the table.
+        //this a big topic to see and learn
         TypedQuery<Student> theQuery=entityManager.createQuery("FROM Student",Student.class);
         return theQuery.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void updateStudent(Student student) {
+        entityManager.merge(student);
     }
 }

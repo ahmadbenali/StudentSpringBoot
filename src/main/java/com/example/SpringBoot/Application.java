@@ -5,6 +5,7 @@ import static java.lang.System.*;
 
 import com.example.SpringBoot.DAO.StudentDAO;
 import com.example.SpringBoot.Entity.Student;
+import org.hibernate.sql.Update;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,8 +30,22 @@ public class Application {
 		return runner -> {
 		//createStudent(studentDAO);
 		//ReadStudent(studentDAO);
-		ListALl(studentDAO);
+		//ListALl(studentDAO);
+		UpdateStudent(studentDAO);
 		};
+
+	}
+
+	private void UpdateStudent(StudentDAO studentDAO) {
+		int studentId=1;
+		out.println("Getting student with id: "+studentId);
+		Student student=studentDAO.findById(studentId);
+
+		out.println("Updating student...");
+		student.setFirstname("safaa");
+		studentDAO.updateStudent(student);
+
+		out.println("Display updated student: "+student);
 
 	}
 
