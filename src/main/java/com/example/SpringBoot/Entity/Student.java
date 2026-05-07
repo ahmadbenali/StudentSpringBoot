@@ -2,13 +2,13 @@ package com.example.SpringBoot.Entity;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name="student")
+//@Entity
+//@Table(name="student")
 public class Student {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
 
     private String firstname;
     private String lastname;
@@ -38,13 +38,13 @@ public class Student {
         this.firstname = firstname;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
+//
+//    public int getId() {
+//        return id;
+//    }
 
     public String getFirstname() {
         return firstname;
@@ -61,7 +61,6 @@ public class Student {
     @Override
     public String toString() {
         return "student{" +
-                "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
