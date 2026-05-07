@@ -45,27 +45,5 @@ public class StudentController {
         return theStudents.get(studentId);
     }
 
-    // this if you enter an int not found
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundExecption exc) {
 
-        StudentErrorResponse error=new StudentErrorResponse();
-        error.setErrorCode(HttpStatus.NOT_FOUND.value());
-        error.setMessage(exc.getMessage());
-        error.setTimestamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
-
-    }
-    //this for all type of exception, like if you typed string instead of int
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleException(Exception exc) {
-
-        StudentErrorResponse error=new StudentErrorResponse();
-        error.setErrorCode(HttpStatus.BAD_REQUEST.value());
-        error.setMessage(exc.getMessage());
-        error.setTimestamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
-    }
 }
